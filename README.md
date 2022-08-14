@@ -196,3 +196,12 @@ Making modules is simple but there are a few rules that apply such as the follow
 In summary as said above making modules can be tedious despite it being simple, however you can get the hang of it, and throughout this tutorial we will be using modules alot
 
 
+# Working with variables, constants and data types | Section 0x002
+
+I know i went a bit far above but let me slow down a bit and start explaining basic concepts to you, this section will talk about how variables work, how to modify them and when and how you can use them, same goes for the constants and data types in the go programming language.
+
+#### Variables ####
+
+Working with variables can be a bit weird in go especially if you never use them. Go makes sure that you use EVERY single variable you declare, if not go will atually error out kinda like the way perl will also warn you about un used variables. 
+
+
