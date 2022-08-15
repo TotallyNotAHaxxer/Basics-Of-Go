@@ -336,5 +336,50 @@ const (
 )
 ```
 
-# Data types in go 
+### Data types ###
+
+Data types in go are pretty simple to understand and quite frankly are like plain english, if you know common mathematics or you have previous experience in other programming languages like c, c++, perl, C#, F#, Z#, Fortran, OCAML, Crystal, Obj-C, Swift or other languages like those then you should be able to grasp them and the different categories, if not let me explain.
+
+In programming there are multiple fields of data types such as the following 
+
+**Basic data types**
+
+this branches off into 
+
+```
+| Integers 
+| Strings and characters 
+| Booleans (true or false)
+```
+
+**Aggregated types**
+
+these branch off into 
+
+```
+| Arrays
+| Structures 
+```
+
+**Reference types**
+
+these branch off into 
+
+```
+| Pointers
+| Slices
+| Maps
+| Functions
+| Channels
+```
+
+### the XDR standard | signed and unsigned integers ###
+
+
+
+When getting into data types alot of the way data types are made inside of a programming language are based on the XDR standard which is defined as the external representation of data or `External Data Representation`. This standard is the standard protocol for the description and encoding of data, it allows us to say and proove the difference between a signed and a unsigned integer. When you start compiled languages you deal lots with bits and type bits such as 32, 8, 16, 64, etc for example in go you have the following bits and integer data types 
+
+| Data type decleration | Bits allowed  | Full name of representation | Description                                                                  |
+| --------------------- | ------------- | --------------------------- | ---------------------------------------------------------------------------- |
+|        uint8          |  8            | 8 bit Unsigned Integer      |  8-bit integers or other data units are those that are 8 bits wide (1 octet) |
 
