@@ -379,6 +379,8 @@ these branch off into
 
 When getting into data types alot of the way data types are made inside of a programming language are based on the XDR standard which is defined as the external representation of data or `External Data Representation`. This standard is the standard protocol for the description and encoding of data, it allows us to say and proove the difference between a signed and a unsigned integer. When you start compiled languages you deal lots with bits and type bits such as 32, 8, 16, 64, etc for example in go you have the following bits and integer data types 
 
+
+
 | Data type decleration | Bits allowed  | Full name of representation | Description                                                                  |
 | --------------------- | ------------- | --------------------------- | ---------------------------------------------------------------------------- |
 |        int8           |  8            | 8 bit signed Integer        |  8-bit integers or other data units are those that are 8 bits wide (1 octet) |
@@ -389,5 +391,121 @@ When getting into data types alot of the way data types are made inside of a pro
 |        uint16         | 16            | 16 bit UNSIGNED Integer     | Unsigned whole or natural numbers ranging from 0 to +65535                   |
 |        uint32         | 32            | 32 bit UNSIGNED Integer     | a 32-bit datum that encodes a nonnegative integer in the range 0 to 4294967295 | 
 |        uint64         | 64            | 64 bit UNSIGNED Integer     | has a minimum value of 0 and a maximum value of (2^64)-1 (inclusive)         | 
+
+
+there is a clear difference between unsigned and signed integers, in summary the difference between a signed and unsiged is defined by the XDR standard below.
+
+The XDR standard defines signed integers as integer. A signed integer is a 32-bit datum that encodes an integer in the range [-2147483648 to 2147483647]. An unsigned integer is a 32-bit datum that encodes a nonnegative integer in the range [0 to 4294967295].
+
+The signed integer is represented in twos complement notation. The most significant byte is 0 and the least significant is 3.
+
+for a better representation see here by IBM for more info `https://www.ibm.com/docs/en/aix/7.2?topic=types-signed-unsigned-integers`
+
+
+### Implimenting Unsigned and Signed integers in go ####
+
+go is very specific with data types as i have said more than enough times, which means you can not disobey the rules behing signed and unsigned integers. say you want to define a netmask for an IP address, you would want to use uint8 because this allows numbers to the limit of 255 and nothing more, if we define the constant as a uint8 but say have a false netmask of 298 which is invalid go will error out and say this is the wrong data type for the job. let us look at some decent examples of using data types and whats a wrong code example and a right code example
+
+
+#### uint 8 wrong and right example ####
+
+**WRONG**
+
+```go
+const mask uint8 = 2558 // go will error out and say cannot use 2558 (untyped int constant) as uint8 value in constant declaration (overflows)
+```
+
+the term `overflows` means it overflows the dimension of that decleration. for example the dimension of the variable `uint8` would be `255` if that dimension exceeds `255` then uint8 is clearly unfit for the job. a correct representation of this would be 
+
+**CORRECT**
+
+```go
+const mask uint8 = 255
+```
+
+#### uint16 wrong and right example ####
+
+**WRONG**
+
+```go
+const number uint16 = 650000 //cannot use 650000 (untyped int constant) as uint16 value in constant declaration (overflows)
+```
+
+**CORRECT**
+
+```go
+const number uint16 = 650000 
+```
+
+#### uint32 wrong and right example ####
+
+**WRONG**
+
+```go
+const age uint32 = 6500000000 // cannot use 6500000000 (untyped int constant) as uint32 value in constant declaration (overflows)
+```
+
+**CORRECT**
+
+```go
+const age uint32 = 650000000
+```
+
+you get the idea right? Data types when it comes to signed and unsigned integers may be confusing however they can for sure come easy to you! 
+
+
+### basic data types and basic implimentation ### 
+
+**IN case you forgot**
+
+
+BASIC DATA TYPES 
+
+this branches off into 
+
+```
+| Integers 
+| Strings and characters 
+| Booleans (true or false)
+```
+
+lets start off with strings, golang has no concept of a char it rather uses byte and rune to represent character values but we wont get into those right now. Lets start working with strings and continue with go along the way. 
+
+lets make a program to say hello to someone based on a name by using the string data type to define the function argument along with its type so it can be formatted.
+
+**Function arguments**
+
+Function arguments in go are quite simple, just define the function name followed by a data type for example our function will be 
+
+```go
+func hello(name string) {} // defines the variable name as a function argument with a data type of string
+```
+
+this means this function can now accept only ONE variable and that variable or argument MUST be a string.
+
+Side note: this is often in older terms defined as a dimension of a function or subroutine. When you say a function can take 4 or 5 values you can say that function has a dimension of 5, for those who are new to that term in a sense and summary a dimension is just the arguments an array can take, and in this case our functions `()` can be represented as an argument array, and the dimension of that array is technically infinite however we can limit how much the dimension allows and in this case its one. The program does not limit this until the user limits it. 
+
+**Making our program**
+
+take the following file 
+
+*main.go*
+
+```go
+package main 
+
+import  "fmt"
+
+func Writer(name string) string {
+	message := "hello there %s"
+	formatted_message := fmt.Sprintf(message, name)
+	return formatted_message
+} 
+
+func main() {
+     a := Writer("jake")
+     fmt.Println(a)
+}
+```
 
 
