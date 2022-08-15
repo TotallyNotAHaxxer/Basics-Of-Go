@@ -181,7 +181,7 @@ to compile and run the main.go file we need to build it
 Hello world! i am from another module
 ```
 
-#### End discussion of this section ####
+## End discussion of this section  | Section 0x001 ##
 
 Making modules is simple but there are a few rules that apply such as the following 
 
@@ -200,8 +200,113 @@ In summary as said above making modules can be tedious despite it being simple, 
 
 I know i went a bit far above but let me slow down a bit and start explaining basic concepts to you, this section will talk about how variables work, how to modify them and when and how you can use them, same goes for the constants and data types in the go programming language.
 
-#### Variables ####
+## Variables ##
 
 Working with variables can be a bit weird in go especially if you never use them. Go makes sure that you use EVERY single variable you declare, if not go will atually error out kinda like the way perl will also warn you about un used variables. 
 
+### Declaring variables ### 
 
+declaring a variable is simple in go, simply just use the `:=` operator to declare one, for example, say we want to declare a name `jake` with a variable called `name`
+
+```go
+package main 
+
+func main() {
+	name := "jake"
+}
+
+```
+
+you can also use the var keyword to cluster variables like so 
+
+```go
+package main
+
+var (
+   name := "jake"
+   age := 18
+   name2 := "json"
+   age2 := 15
+)
+
+func main() {}
+```
+
+this really comes in handy when declaring things like data type variables and what not even reaching data structures.
+
+you can also define a variables data type with the var keyword or its value like so 
+
+
+```go
+package main 
+
+func main() {
+	var name string // define a empty variable and its data type which is a string
+}
+```
+
+or
+
+```go
+package main 
+
+func main() {
+	var name = "jake" // declaring the variable name with its value
+}
+```
+
+### Info moment -> taking a second to address go's security ###
+
+Go respects alot of the code you write as long as you respect it yourself. Go is like a knife in order to use it properly and have the knife respect you, you must respect it first. Golang immediately will error out if a variable is not used, and will not be able to run or compile that is if the variable is declared but unused. you will get the error 
+
+```
+variable_name declared but not used | compiler
+```
+
+why does is go one of the few languages out there to do this? I have always seen it as a security issue / code / op issue, when you are developing code and do not use variables some compiles will erase it from the code, others will leave it in there which can cause clutter, and in the sense of debugging it can make your code way weirder to read especially if you do not use a variable. Not using variables can also lead to bugs which in a certian scenario can lead to a security vulnerability within the program, it is always good to make sure you use your variables in go or c or c++ or any language like that, however it just is better that go makes it mandatory to not allow you to make or declare variables without them being used, respect that and the language will come easier for you to learn and use.
+
+
+### Constants ###
+
+In a few we will talk about modifying the data type of variables, converting them and transporting them but unlike variables constants can not be modified which brings me to this next section which is talking about the use case of constants.
+
+If you dont know this constants in ANY form mathematical, scientifical, or computational SHOULD NEVER BE ABLE TO CHANGE, constants should always live up to their name staying constant or static unlike variables which are fluid (constantly changing or of right to chnage)
+
+constants are declared in go using the const keyword followed by the `=` symbol, then the variable or the variable and the data type, let me explain
+
+here we simply use the const keyword to define a variable hello which has a value of hello, this variable is known as an untyped string because its data type is assumed not assigned
+
+```go
+const hello = "hello"
+```
+
+have you ever heard of implicit typing? I would not assume so if you have never programmed before or never took mathematics since it is a term that is very VERY rarely used in moder day programming languages today. Implicit typing is simple to understand, if you do not declare a data type before a variables value it becomes implicit or assumed which causes the `untyped string` as the data type of the constant. 
+
+### Optional side of implicit typing if you are interested ###
+
+**if you do not want to learn about legacy languages or learn how implicit typing is used and implimented skip this section and move on, if else continue reading**
+
+Implicit typing was first implimented in the programming language fortran, for those who do not know fortran stands for FORMula TRANslation, Which means it was a programming language designed for exactly what it is, formula translation. A great way fortran would impliment data types is by assuming the variables data type based on its first letter using implicit typing.
+
+for example follow the following program in fortran95 
+
+```f90
+PROGRAM main
+	CHARACTER :: name
+END PROGRAM main
+```
+
+fortran has a keyword you should always use in your programs called `implicit none` this tells fortran to NOT assume the data type of a variable based on its first letter. You see fortran without the decleration of `implicit none` would assume the variables data type based on the first letter of the variable, if the first letter was any of the following | `i, j, k, l, m, n` fortran would AUTOMATICALLY assume the variable to be a integer, if else it would be `REAL` which kinda translates to modern languages except the real meaning of implicit typing is not used, variables that are NOT defined with a data type before have their data types pre assumed. 
+
+### concluding the implicit typing brick above | this is a seperation statement ### 
+
+how do we fix this and prevent our data type from being assumed? Simple! all we do is just declare the constant keyword followed by the variable name, then its type which is followed by its value. As said before go really respects data types, and if you do not respect them as well you can cause fatal errors with your programs, so lets correct the constant hello to a propper more formal form and type 
+
+```go
+const hello string = "hello"
+```
+
+pretty simple right? Now we went from assuming the data type of the constant to assigning it which can make it alot less bugy in the future when working with more higher end programs and functions.
+
+
+  
