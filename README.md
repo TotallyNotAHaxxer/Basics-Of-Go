@@ -509,3 +509,71 @@ func main() {
 ```
 
 
+in this code brick we use a function called writer, this function will be the main building block of our program defined with an argument defined as `name` with a data type of string, and outside of the `()` is another data type `string`, anytime you define a single or multiple data types outside of the `()` in a function you are telling that function to return a value. then after the brackets we define a variable named message with a value of `hello there %s`, the `%s` is like a placeholder / format sign, like a function it acts as an argument. 
+
+then we define `formatted_message` which defines a function called `Sprintf`, the `Sprintf` function allows us to utilize the `%s` or like symbols and insert values into it. so when we use `fmt.Sprintf(message, name)` we are telling the program to insert the value of the function argument `name` into the variable `message` which before we return it looks like `hello there jake` since when we call the function in our main block we define the argument to be `"jake"`
+
+now we use the `return` keyword in the function to tell us to return a variable of type string which in this case is `formatted_message`
+
+we call our main block and assign a variable `a` with the value of the output returned from a function. When we define or assign a variable like the one in our program to a function, the variable `a` will hold the output and results of that function, then we print it. when  we run our program 
+
+```
+go run main.go
+```
+
+we get 
+
+```
+> hello jake 
+```
+
+** Defining and returning multiple values in a function **
+
+lets make a function where we can allow the user to input a integer as an age and a name as a string but also return a message and a integer of a string.
+
+okay okay woah that was a brain fuck sorry about that LOL
+
+what i mean is our function will look like this 
+
+```go
+func Ret_Age_and_Name(name string, age int) (string, string) {}
+```
+
+the string will be an integer? yeah, we will use type conversion to return the integer as a string using the strconv package by go! so lets use that 
+
+take the following function and code block 
+
+```go
+package main
+
+import (
+   "fmt"
+   "reflect"
+   "strconv"
+)
+
+func Return_Function(name string, age int) (string, string) {
+	message := "%s is %v | just %s the age limit"
+	tf_value := age < 18
+	switch tf_value {
+	case true:
+		message = fmt.Sprintf(message, name, age, "below the legal")
+		break
+	default:
+		message = fmt.Sprintf(message, name, age, "above or at the legal")
+		break
+	}
+	s := strconv.Itoa(age)
+	return message, s
+}
+
+
+func main() {
+	a, b := Return_Function("jake", 17)
+	fmt.Println(a)
+	fmt.Println("Data type of the age which was first a integer -> ", reflect.TypeOf(b))
+}
+
+```
+
+
