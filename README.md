@@ -386,6 +386,8 @@ When getting into data types alot of the way data types are made inside of a pro
 |        int32          |  32           | 32 bit SIGNED Integer       | 32-bit. This means that the number is represented by 32 separate one’s and zero’s. 32 bits of 2 possible states = 2^32=4,294,967,296 possible values. | 
 |        int64          |  64           | 64 bit SIGNED integer       | 	A 32-bit signed integer. It has a minimum value of -2,147,483,648 and a maximum value of 2,147,483,647 (inclusive).|
 |        uint8          |  8            | 8 bit UNSIGNED Integer      |  Unsigned whole or natural numbers ranging from 0 to +255 can not be 0/-255  |
-
+|        uint16         | 16            | 16 bit UNSIGNED Integer     | Unsigned whole or natural numbers ranging from 0 to +65535                   |
+|        uint32         | 32            | 32 bit UNSIGNED Integer     | a 32-bit datum that encodes a nonnegative integer in the range 0 to 4294967295 | 
+|        uint64         | 64            | 64 bit UNSIGNED Integer     | has a minimum value of 0 and a maximum value of (2^64)-1 (inclusive)         | 
 
 
