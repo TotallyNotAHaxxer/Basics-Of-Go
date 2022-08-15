@@ -381,5 +381,9 @@ When getting into data types alot of the way data types are made inside of a pro
 
 | Data type decleration | Bits allowed  | Full name of representation | Description                                                                  |
 | --------------------- | ------------- | --------------------------- | ---------------------------------------------------------------------------- |
-|        uint8          |  8            | 8 bit Unsigned Integer      |  8-bit integers or other data units are those that are 8 bits wide (1 octet) |
+|        int8           |  8            | 8 bit signed Integer        |  8-bit integers or other data units are those that are 8 bits wide (1 octet) |
+|        uint8          |  8            | 8 bit UNSIGNED Integer      |  Unsigned whole or natural numbers ranging from 0 to +255 can not be 0/-255  |
+|        int16          |  16           | 16 bit SIGNED Integer       |  numerical tags where variables have the potential for negative or positive  | 
+|        int32          |  32           | 32 bit SIGNED Integer       | 32-bit. This means that the number is represented by 32 separate one’s and zero’s. 32 bits of 2 possible states = 2^32=4,294,967,296 possible values. | 
+
 
