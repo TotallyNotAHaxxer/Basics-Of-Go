@@ -727,3 +727,183 @@ for i is equal to 0, until i is greater than 100 incriment i by one and append t
 
 
 **NOTE**: i didnt mention this before but if we do not declare a variable tied to the data structure and we just try to append the values go will throw an error saying that the data type has no method.
+
+
+> Arrays 
+
+Arrays are quite simple to understand in go, arrays are all of the same with data types you have integer based arrays, byte, string, rune, floats and even complex arrays, here are the ways to initalize the arrays in different or of different data types 
+
+| Data type  | Array initilization | Array values that it can hold |  Usage / Example                    | 
+| ---------- | ------------------- | ----------------------------- | ----------------------------------- |
+| uint       | []uint              | ONLY UNSIGNED INTEGERS        | uuint := []uint{0x00, 0x001, 100}   |
+| int        | []int               | ONLY SIGNED INTEGERS          | iint  := []int{19, 17, 16, 15}      |
+| string     | []string            | ONLY STRINGS                  | str   := []string{"james", "name"}  |
+| rune       | []rune              | ONLY RUNES                    | rrune := []rune{'🦍', '🦡' '\u2665'}  |
+| float      | []float             | ONLY FLOATS                   | ffloat := []float{1.5, 1.9, 90.8}   |
+
+as you can see there are many ways to impliment an array but what exactly is `[]` doing, so when we define a empty square brackets before the array type we are telling go that this is essentiall an infinite based dimensional array, remember how i explained how `DIMENSION` is used in a program or typically used to describe the length of arguments or an array / how many values they can hold? yeah well when we use `[]` we are simply telling go there is no set length for the array, HOWEVER! we can tell go to infer and allow a limit of an array using the following 
+
+say we want to make an array of strings, we can do the following 
+
+```go
+package main 
+
+import "fmt"
+
+func main() {
+	ARR := [...]string{"data1", "data 2", "data 3"}
+	fmt.Println(ARR)
+}
+```
+
+when we use the `...` inside of the square brackets we are telling the program to infer the length of the array from the provided array literal which if you dont know an array literal basically means when you initilize an array using array literals or square brackets `[]` , the length or DIMENSION of the array is set to the number of arguments specified. We can also use the square brackets to specify how much values we want the array to hold like the following 
+
+if we were to use the code 
+
+
+```go
+	ARR := [...]string{"data1", "data 2", "data 3"}
+```
+
+and switch the `[...]` to `1` we would get the following error 
+
+```
+./prog.go:8:28: index 1 is out of bounds (>= 1)
+./prog.go:8:38: index 2 is out of bounds (>= 1)
+Go build failed.
+```
+
+go is telling us here that there is more values in the array than there should be, so if we take out the values `data 2` and `data 3` we get the following
+
+**INPUT**
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	ARR := [1]string{"data1"}
+	fmt.Println(ARR)
+}
+```
+
+
+**OUTPUT**
+
+```go
+[data1]
+
+Program exited - SUCCESS.
+```
+
+## A talk on the dimension OF AN ARRAY    VS  an array dimension type ## 
+
+this may be confusing to you at first so let me explain, as we have discussed before the dimension IN the array is the amount values the array can hold again speeking from a legacy standpoint. then you have the dimension OF the array which can be of the following 
+
+**1 Dimensional Arrays**
+
+1 Dimensional arrays are arrays by definiton a type of linear array. Accessing its elements involves a single subscript which can either represent a row or column index.
+
+they can be used and implimented into golang like so 
+
+```
+var []string{"arrays wohoo!", "data2"} // etc 
+```
+
+** Two dimensional arrays **
+
+By Definiton: A multidimensional array in MATLAB® is an array with more than two dimensions. In a matrix, the two dimensions are represented by rows and columns. Each element is defined by two subscripts, the row index and the column index.
+
+think of a multidimensional array like a giant table, seen here for example
+
+say you have an array defined with two dimensions like so 
+
+```
+[4][5]string
+```
+
+this would look like the following as a visual representation
+
+the 4 in the first dimension says we have 4 rows, and the 5 states we have 5 columns so 
+
+| Column 0 | Column 1 | Column 2 | Column 3 | column 4 | column 5 |
+| -------- | -------- | -------- | -------- | -------- | -------- |
+| Row 0    |          |          |          |          |          |
+| Row 1    |          |          |          |          |          |
+| Row 2    |          |          |          |          |          |
+| Row 3    |          |          |          |          |          |
+| Row 4    |          |          |          |          |          |
+
+how would we impliment this into go, well we can use the following 
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	a := [3][4]string{
+		{"c1", "c2", "c3", "c4"}, /*  initializers for row indexed by 0 */
+		{"c1", "c2", "c3", "c4"}, /*  initializers for row indexed by 1 */
+		{"c1", "c2", "c3", "c4"}, /*  initializers for row indexed by 2 */
+	}
+	fmt.Println(a)
+}
+```
+
+the following example is a multidimensional array of data type string, say we wanted to index a certian row or grab only one row of the array well we can easily do that, indexing arrays is quite easy in the go programming language, even when indexing multi dimensional based arrays. 
+
+to grab the first row and all of its values just do this 
+
+```go
+fmt.Println(a[0])
+```
+
+which will print out 
+
+```
+[c1 c2 c3 c4]
+```
+
+woah woah woah WOAH! wait a damn minute, why do we have to start at 0? when we are indexing arrays, creating them, or editing them even adding values to them, the array will always start by 0, out rows start like so 
+
+`0 then 1 then 2` 3 is an extra NULL space in the array, a way to start accessing the values within the array. There is a way deeper meaning behind this and oddly enough most arrays depending on the language will be indexed by 0 or start at 0, so whenever you want to pull the first value from the array `in a single dimension` just use `ARRAY_NAME[0]` which in our case pulls out c1 if the array was a single dimension, but if we wanted to pull the LAST value it would be `ARRAY_NAME[3]`
+
+now let me clear that up a bit with the multi dimensional arrays, say we want to pull the value c3 from row one of our array which actually lets update our array to the following 
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	a := [3][4]string{
+		{"c1_r0", "c2_r0", "c3_r0", "c4_r0"}, /*  initializers for row indexed by 0 */
+		{"c1_r1", "c2_r1", "c3_r1", "c4_r1"}, /*  initializers for row indexed by 1 */
+		{"c1_r2", "c2_r2", "c3_r2", "c4_r2"}, /*  initializers for row indexed by 2 */
+	}
+}
+
+```
+
+to pull c3 from the first row of the array we use the following 
+
+
+```go
+fmt.Println(a[0][2])
+```
+
+which will output 
+
+```
+c3_r0
+```
+
+as you can see when we look at it from another prespective its quite simple to understand, and as you go on should go easier and easier. Most of the times unless you are writing robust code applications you should not have to deal with multi dimensional arrays or unless you are working with algorithms. 
+
+
+
+
+
+
