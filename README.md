@@ -553,7 +553,7 @@ import (
 )
 
 func Return_Function(name string, age int) (string, string) {
-	message := "%s is %v | just %s the age limit"
+	message := "%s is %d | just %s the age limit"
 	tf_value := age < 18
 	switch tf_value {
 	case true:
@@ -575,5 +575,42 @@ func main() {
 }
 
 ```
+
+
+i suprised you there didnt i? i went from showing small functions to a weird ass function that may or might not be new to you let me explain. so first we define our function as Return_Function which holds to arguments which are `name` of data type `string` and `age` of data type integer. we then define that the function MUST return two variables of type string. `(string, string)` 
+
+we kick the function off by defining a variable names `mesage` with the value `"%s is %v | just %s the age limit"`, the %s will be the name, the %v will be the age `%d` representing a integer formatter and another %s for another string statement. We then impliment boolean logic, if you do not know boolean logic is true or false or 1 and 0. we make this logic by declaring a variable followed by `age < 18` this variable now either holds true or false depending on our function argument, if the age is greater than 18 then it will come back false, if it is below 18 then it will be true because age in that case would be LESS THAN `<` or equal to `=<` the number or integer `18`.
+
+we create a switch statement which is like a better way than if statements, we can say something like this 
+
+```go
+if age <= 18 {
+   // do something
+}
+if age >= 18 {
+  // do something
+}
+```
+
+however i always urge people to stay as far away from if statements as you can. anyway this switch statement tells us that if the statement was true which means the age was NOT equal to or greater than 18 then to format the following message 
+
+```go
+		message = fmt.Sprintf(message, name, age, "below the legal")
+		break
+```
+
+so now our variable message is 
+
+```
+jake is 17 | just below or at the legal the age limit 18
+```
+
+note we re define `message` with a `=` sign because we are CHANGING the variables contents and values. so instead of the message being empty and just `is | just the age limit`
+
+it can now be 
+
+`jake is 17 | just below or at the legal the age limit 18`
+
+
 
 
