@@ -611,6 +611,119 @@ it can now be
 
 `jake is 17 | just below or at the legal the age limit 18`
 
+the default statement in the switch function is if all options are exhausted then so and so will happen which in this case is false. We could use `case false:` but the default option works alot better in our case. then we declare the variable name `s` with the return values of the function `Itoa` from `strconv`, the `strconv` stands for string conversion and the `Itoa` means Integer to string or character. this will convert out integer to a string which we can use in the return statement with 
+
+```go
+return message, s
+```
+
+which will return both variables of type string
+
+if we look at our main function 
+
+```go
+func main() {
+	a, b := Return_Function("jake", 17)
+	fmt.Println(a)
+	fmt.Println("Data type of the age which was first a integer -> ", reflect.TypeOf(b))
+}
+```
+
+we assign this time two values, A will be the message that is returned and the B will be the converted integer variable `age`, but we also add values to the function we are calling, if it was not clear jake is our name argument and the age argument is 17. 
+
+we print a the message and then we use package `reflect` to refelct the data type of the age that we converted to make sure it was a string. 
+
+Quite simple right?
+
+
+<br>
+<br>
+### Implimenting arrays and data structures ###
+
+if you do not know a data structure is a struture of variables assigned with a type, so think of something like the variable list with `var()` but its more complex than that. You would use a data structure to not only modify variables but also add a more sense of complexity and flexibility to your code. 
+
+declaring a typed data structure is like the following 
+
+```go
+type TYPE_NAME struct {}
+```
+
+where TYPE_NAME is the name of your type. So lets make an example data type 
+
+```go
+package main 
+
+type User struct {
+    Username string
+    UserAge int
+}
+```
+
+this is a simple data structure named user, it has two variables one which is username of type string and the other which is user age of type integer. How would you access and use type structures in your code? Glad you asked or rather i asked myself LOL XD
+
+say we want to add a username to the data structure we will first assign a variable name to the data structure making that our initation variable to the data structure.
+
+```go
+package main 
+
+type Data struct {
+ 	User string 
+	Username string
+	UserNickname string
+	UserAge int
+}
+
+var Structure_INIT Data
+
+func main() {
+	Structure_INIT.User = "Username123"
+}
+
+```
+
+This simple program first defines the data structure with name `Data` which has variables `User, Username, UserNickname and UserAge` the first three we define as strings and the last variable we define as an integer. 
+
+we declare the variable `Structure_INIT` with the `var` keyword and assign the name `Data` which is the name of the data structure we are choosing to add values to.
+
+then 
+
+```go
+func main() {
+	Structure_INIT.User = "Username123"
+}
+```
+
+under the function main we declare the variable `Structure_INIT` and use what i like to call a reacher, in other terms a key that is used to reach a specific variable under a data structure or in a module. I can not find any other accurate terms for this so i made my own, just know that is not the 100% agreed upon description, but the `"key"` is the `.` after we define the key we define the variable we want to reach which in our case is User, and we assign the string `"Username123"`. 
+
+Data types can be used in various ways and you dont have to just assign a data type to it, you can assign functions, keywords, other variables, and even maps to these data structures. 
+
+lets use a secondary example of a data type, say you want to append values to an array defined in the daat structure, well lets do something like that 
+
+
+```go
+package main 
+
+type Numbers struct {
+	Numbers_To_Append []int
+}
+
+var key Numbers
+
+func main() {
+	for i := 0; i < 100; i++ {
+		key.Numbers_To_Append = append(key.Numbers_To_Append, i)
+	}
+}
+
+```
+
+first we define a new data structure which has the variable `Numbers_To_Append` which uses the data structure `[]int` which is a array of integers (NOTE: ONLY INTEGERS CAN BE APPENDED OR ADDED TO THIS LIST)
+
+we then define key as our key to the data structure, and then we unde rour main block define the a very basic for loop. in english this for loop would be like 
+
+for i is equal to 0, until i is greater than 100 incriment i by one and append that data to the variable of type `[]int` in the data structure we declared previously. 
 
 
 
+
+**NOTE**: i didnt mention this before but if we do not declare a variable tied to the data structure and we just try to append the values go will throw an error saying that the data type has no method.
