@@ -202,7 +202,11 @@ I know i went a bit far above but let me slow down a bit and start explaining ba
 
 ## Variables ##
 
+
+
 Working with variables can be a bit weird in go especially if you never use them. Go makes sure that you use EVERY single variable you declare, if not go will atually error out kinda like the way perl will also warn you about un used variables. 
+
+
 
 ### Declaring variables ### 
 
@@ -257,6 +261,10 @@ func main() {
 
 ### Info moment -> taking a second to address go's security ###
 
+
+
+
+
 Go respects alot of the code you write as long as you respect it yourself. Go is like a knife in order to use it properly and have the knife respect you, you must respect it first. Golang immediately will error out if a variable is not used, and will not be able to run or compile that is if the variable is declared but unused. you will get the error 
 
 ```
@@ -264,6 +272,9 @@ variable_name declared but not used | compiler
 ```
 
 why does is go one of the few languages out there to do this? I have always seen it as a security issue / code / op issue, when you are developing code and do not use variables some compiles will erase it from the code, others will leave it in there which can cause clutter, and in the sense of debugging it can make your code way weirder to read especially if you do not use a variable. Not using variables can also lead to bugs which in a certian scenario can lead to a security vulnerability within the program, it is always good to make sure you use your variables in go or c or c++ or any language like that, however it just is better that go makes it mandatory to not allow you to make or declare variables without them being used, respect that and the language will come easier for you to learn and use.
+
+
+
 
 
 ### Constants ###
@@ -281,6 +292,9 @@ const hello = "hello"
 ```
 
 have you ever heard of implicit typing? I would not assume so if you have never programmed before or never took mathematics since it is a term that is very VERY rarely used in moder day programming languages today. Implicit typing is simple to understand, if you do not declare a data type before a variables value it becomes implicit or assumed which causes the `untyped string` as the data type of the constant. 
+
+
+
 
 ### Optional side of implicit typing if you are interested ###
 
@@ -300,13 +314,27 @@ fortran has a keyword you should always use in your programs called `implicit no
 
 ### concluding the implicit typing brick above | this is a seperation statement ### 
 
+
+
+
 how do we fix this and prevent our data type from being assumed? Simple! all we do is just declare the constant keyword followed by the variable name, then its type which is followed by its value. As said before go really respects data types, and if you do not respect them as well you can cause fatal errors with your programs, so lets correct the constant hello to a propper more formal form and type 
 
 ```go
 const hello string = "hello"
 ```
 
-pretty simple right? Now we went from assuming the data type of the constant to assigning it which can make it alot less bugy in the future when working with more higher end programs and functions.
+pretty simple right? Now we went from assuming the data type of the constant to assigning it which can make it alot less bugy in the future when working with more higher end programs and functions. like the `var` keyword you can also use the `()` to create a list of constants 
 
+```go
+package main 
 
-  
+const (
+   name string = "jake"
+   age int = 18
+   name string = "john"
+   age int 15
+)
+```
+
+# Data types in go 
+
